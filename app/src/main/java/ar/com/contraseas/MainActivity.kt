@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     val claves = mutableMapOf<String,String>()
-
+    lateinit var adapter : ArrayAdapter<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,8 +24,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         val array = ArrayList(claves.keys)
-        val adapter = ArrayAdapter(this,R.layout.spinner_elemento_visible,
+        adapter = ArrayAdapter(this,R.layout.spinner_elemento_visible,
             array )
+
         adapter.setDropDownViewResource(R.layout.spinner_elemento_visible)
         spNombre.adapter = adapter
         spNombre.onItemSelectedListener =
@@ -66,6 +68,9 @@ class MainActivity : AppCompatActivity() {
         claves.put(nombre,clave)
         val prefs = getSharedPreferences("MisClaves", Context.MODE_PRIVATE)
         val editor = prefs.edit()
+        adapter.add(nombre)
+        adapter.notifyDataSetChanged()
+
         editor.putString(nombre,clave)
         editor.commit()
     }
@@ -75,5 +80,17 @@ class MainActivity : AppCompatActivity() {
         tvClave.text = clave
 
     }
+    /*
+    * Separar generar y guardar en otra actividad
+    * eliminar claves
+    * login
+    * generar historial de claves sobreescritas
+    * exportar claves al mail
+    * compartir claves por whatsapp
+    * No permitir nombres vacios
+    * Elegir tipos de caracteres y cantidad
+    * implementar almacenamiento en la nube
+    *
+    * */
 
 }
