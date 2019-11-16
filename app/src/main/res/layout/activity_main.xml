@@ -30,28 +30,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <EditText
-                android:id="@+id/etNombreClave"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="50dp"
-                android:ems="10"
-                android:hint="Nombre de clave"
-                android:inputType="textPersonName" />
-
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btGenerarMain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="50dp"
-                android:onClick="onClickGuardarClave"
-                android:text="Guardar Clave" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginRight="50dp"
                 android:onClick="onClickGenerar"
                 android:text="Generar Clave" />
 

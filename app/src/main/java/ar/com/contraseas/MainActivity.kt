@@ -1,12 +1,14 @@
 package ar.com.contraseas
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 
 import android.widget.ArrayAdapter
+import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -52,34 +54,53 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+/*
+* val nombre = etNombreClave.text.toString()
+            val clave = tvClave.text.toString()
+            claves.put(nombre,clave)
+            val prefs = getSharedPreferences("MisClaves", Context.MODE_PRIVATE)
+            val editor = prefs.edit()
+            adapter.add(nombre)
+            adapter.notifyDataSetChanged()
 
+            editor.putString(nombre,clave)
+            editor.commit()*/
     fun onClickGenerar(view: View) {
-        val minusculas="qwertyuiopasdfghjklzxcvbnm"
-        val mayusculas = minusculas.toUpperCase()
-        val numeros = "1234567890"
-        val charPool = (minusculas+mayusculas+numeros).toList()
-        val clave = RandomString.generar(charPool,10)
-        tvClave.text=clave
+
+        //view.isEnabled=false
+        val intent = Intent(this,Generar::class.java)
+        startActivityForResult(intent,0)
     }
 
-    fun onClickGuardarClave(view: View) {
-        val nombre = etNombreClave.text.toString()
-        val clave = tvClave.text.toString()
-        claves.put(nombre,clave)
-        val prefs = getSharedPreferences("MisClaves", Context.MODE_PRIVATE)
-        val editor = prefs.edit()
-        adapter.add(nombre)
-        adapter.notifyDataSetChanged()
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 0){
+            if(resultCode == 0){
+                if(data != null){
+                    val ValorClave =
+                        data.getStringExtra("ValorClave")
+                    val NombreClave =
+                        data.getStringExtra("NombreClave")
+                    claves.put(NombreClave,ValorClave)
+                    val prefs = getSharedPreferences("MisClaves",
+                        Context.MODE_PRIVATE)
+                    val editor = prefs.edit()
+                    editor.putString(NombreClave,ValorClave)
+                    editor.commit()
+                    adapter.add(NombreClave)
+                    adapter.notifyDataSetChanged()
+                    //btGenerarMain.isEnabled=true
 
-        editor.putString(nombre,clave)
-        editor.commit()
+
+                }
+            }
+        }
+
     }
 
-    fun onClickVerClave(view: View) {
-        val clave = claves.get(etNombreClave.text.toString())
-        tvClave.text = clave
 
-    }
+
+
     /*
     * Separar generar y guardar en otra actividad
     * eliminar claves

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Contraseñas</string>
+    <string name="title_activity_generar">Generar</string>
 </resources>
