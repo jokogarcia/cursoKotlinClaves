@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -18,17 +19,28 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_margin="25dp"
+                app:srcCompat="@drawable/candado" />
+
             <TextView
                 android:id="@+id/tvClave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:textColor="@color/colorAccent"
+                android:textSize="36sp"
+                android:textStyle="bold"
                 tools:text="jflksdj#RGej" />
 
             <Spinner
                 android:id="@+id/spNombre"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp" />
 
             <Button
                 android:id="@+id/btGenerarMain"
@@ -37,8 +49,10 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="100dp"
                 android:layout_marginRight="50dp"
+                android:background="@color/fondoBoton"
                 android:onClick="onClickGenerar"
-                android:text="Generar Clave" />
+                android:text="Generar Clave"
+                android:textSize="18sp" />
 
         </LinearLayout>
     </ScrollView>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#0052CA</color>
+    <color name="colorPrimaryDark">#01358B</color>
+    <color name="colorAccent">#DF0C0C</color>
+    <color name="miFondo">#8CBBD5</color>
+    <color name="fondoTvClave">#1B2BD8</color>
+    <color name="fondoBoton">#FFFFFF</color>
+    <color name="textoSeleccionado">#0040FF</color>
+    <color name="textoNoSeleccionado">#F2F2F2</color>
 </resources>

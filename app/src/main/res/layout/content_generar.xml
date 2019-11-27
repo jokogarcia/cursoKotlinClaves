@@ -4,11 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Generar"
     tools:showIn="@layout/activity_generar">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ToggleButton
+            android:id="@+id/btNumeros"
+            style="@style/BotonesDeOpcion"
+            android:text="ToggleButton"
+            android:textOff="123"
+            android:textOn="123" />
+
+        <ToggleButton
+            android:id="@+id/btSimbolos"
+            style="@style/BotonesDeOpcion"
+            android:text="ToggleButton"
+            android:textOff="#$%"
+            android:textOn="#$%" />
+
+        <ToggleButton
+            android:id="@+id/btMayusculas"
+            style="@style/BotonesDeOpcion"
+
+            android:text="ToggleButton"
+            android:textOff="ABC"
+            android:textOn="ABC" />
+
+        <ToggleButton
+            android:id="@+id/btMinusculas"
+            style="@style/BotonesDeOpcion"
+            android:text="abc"
+            android:textOff="abc"
+            android:textOn="abc" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/BotonesDeOpcion"
+            android:onClick="onClickBotonLargo"
+            android:text="Largo"
+            android:textAllCaps="false" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvClave"
@@ -19,7 +61,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btGenerarClave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
@@ -32,14 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Nombre de la clave"
+        android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:onClick="onClickGuardarClave"
-        android:text="Guardar" />
 </LinearLayout>
