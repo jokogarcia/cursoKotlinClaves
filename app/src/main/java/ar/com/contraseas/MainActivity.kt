@@ -9,6 +9,7 @@ import android.widget.AdapterView
 
 import android.widget.ArrayAdapter
 import android.widget.Button
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -19,7 +20,24 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val prefs = getSharedPreferences("MisClaves", Context.MODE_PRIVATE)
+
+
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val mAuth = FirebaseAuth.getInstance();
+        if(mAuth.currentUser == null){
+            val loginIntent = Intent(this,LoginActivity::class.java)
+            startActivity((loginIntent))
+        }
+        setup()
+    }
+    fun setup(){
+        val mAuth = FirebaseAuth.getInstance();
+        val usuarioActual = mAuth.currentUser
+        val prefs = getSharedPreferences("ClavesDe_"+usuarioActual?.email?:"Anonimo", Context.MODE_PRIVATE)
         val copy = prefs.all
         for ((nombre,clave) in copy ){
             claves.put(nombre, clave as String)
@@ -50,8 +68,6 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
-
-
 
     }
 /*

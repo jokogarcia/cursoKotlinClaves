@@ -17,7 +17,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etEmailUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
@@ -26,7 +26,7 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etTextContraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
@@ -41,13 +41,26 @@
         android:layout_margin="25dp"
         android:text="Ingresar" />
 
+    <TextView
+        android:id="@+id/tvMensajeEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="25dp"
+        android:text="Revise su correo y verifique su dirección para continuar"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#D81B60"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
+
     <Button
         android:id="@+id/btRegistrar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:background="@color/miFondo"
-        android:text="¿No estás registrado?"
+        android:onClick="onClickRegistrar"
+        android:text="Registrar nuevo usuario"
         android:textAllCaps="false"
         android:textColor="@color/textoSeleccionado" />
+
 </LinearLayout>
