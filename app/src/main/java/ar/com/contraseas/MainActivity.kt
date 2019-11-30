@@ -21,8 +21,38 @@ class MainActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         setContentView(R.layout.activity_main)
 
-        val prefs = getSharedPreferences("MisClaves", Context.MODE_PRIVATE)
+
+
+
+    }
+/*
+* val nombre = etNombreClave.text.toString()
+            val clave = tvClave.text.toString()
+            claves.put(nombre,clave)
+            val prefs = getSharedPreferences("MisClaves", Context.MODE_PRIVATE)
+            val editor = prefs.edit()
+            adapter.add(nombre)
+            adapter.notifyDataSetChanged()
+
+            editor.putString(nombre,clave)
+            editor.commit()*/
+    fun onClickGenerar(view: View) {
+
+        //view.isEnabled=false
+        val intent = Intent(this,Generar::class.java)
+        startActivityForResult(intent,0)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val usuarioActual = mAuth.currentUser
+        if(usuarioActual==null){
+            val intent = Intent(this,LoginActivity::class.java)
+            startActivity(intent);
+        }
+        val prefs = getSharedPreferences("ClavesDe_"+usuarioActual!!.email.toString(), Context.MODE_PRIVATE)
         val copy = prefs.all
+
         for ((nombre,clave) in copy ){
             claves.put(nombre, clave as String)
         }
@@ -53,34 +83,6 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-
-
-    }
-/*
-* val nombre = etNombreClave.text.toString()
-            val clave = tvClave.text.toString()
-            claves.put(nombre,clave)
-            val prefs = getSharedPreferences("MisClaves", Context.MODE_PRIVATE)
-            val editor = prefs.edit()
-            adapter.add(nombre)
-            adapter.notifyDataSetChanged()
-
-            editor.putString(nombre,clave)
-            editor.commit()*/
-    fun onClickGenerar(view: View) {
-
-        //view.isEnabled=false
-        val intent = Intent(this,Generar::class.java)
-        startActivityForResult(intent,0)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val usuarioActual = mAuth.currentUser
-        if(usuarioActual==null){
-            val intent = Intent(this,LoginActivity::class.java)
-            startActivity(intent);
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
