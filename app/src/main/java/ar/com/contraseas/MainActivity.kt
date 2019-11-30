@@ -2,21 +2,23 @@ package ar.com.contraseas
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
-
 import android.widget.ArrayAdapter
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
+    private val mAuth = FirebaseAuth.getInstance();
 
     val claves = mutableMapOf<String,String>()
     lateinit var adapter : ArrayAdapter<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Initialize Firebase Auth
         setContentView(R.layout.activity_main)
 
         val prefs = getSharedPreferences("MisClaves", Context.MODE_PRIVATE)
@@ -70,6 +72,15 @@ class MainActivity : AppCompatActivity() {
         //view.isEnabled=false
         val intent = Intent(this,Generar::class.java)
         startActivityForResult(intent,0)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val usuarioActual = mAuth.currentUser
+        if(usuarioActual==null){
+            val intent = Intent(this,LoginActivity::class.java)
+            startActivity(intent);
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

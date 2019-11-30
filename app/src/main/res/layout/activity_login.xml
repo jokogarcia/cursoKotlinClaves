@@ -17,7 +17,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etNombreUsuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
@@ -26,7 +26,7 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etContraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
@@ -40,6 +40,14 @@
         android:layout_height="wrap_content"
         android:layout_margin="25dp"
         android:text="Ingresar" />
+
+    <TextView
+        android:id="@+id/tvMensajeValidacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hemos enviado un email de verificación a su casilla de correo. Haga click en en el enlace provisto para validar su cuenta."
+        android:textColor="#E53935"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/btRegistrar"
